@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'leaflet/dist/leaflet.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-navy: #0B1D3A;
+  --color-navy-800: #0F2347;
+  --color-navy-700: #143060;
+  --color-navy-600: #1a3d7a;
+  --color-saffron: #F5A623;
+  --color-saffron-100: #FEF3C7;
+  --color-saffron-200: #FDE68A;
+  --color-crimson: #B91C1C;
+  --color-crimson-100: #FEE2E2;
+  --color-terracotta: #C2410C;
+  --color-terracotta-100: #FFEDD5;
+  --color-amber-600: #D97706;
+  --color-forest: #15803D;
+  --color-forest-100: #DCFCE7;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F8FAFC;
+  color: #0B1D3A;
+}
+
+/* Only the primary workspace scrolls smoothly. Nested lists keep native scroll. */
+#app-content {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* The Google widget remains available to the page but the app supplies its own
+   accessible language picker. Hide Google's injected chrome, not page content. */
+.google-translate-control,
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+body > .skiptranslate {
+  display: none !important;
+}
+
+html {
+  margin-top: 0 !important;
+}
+
+/* Google Translate injects a banner and offsets the document after a language
+   change. RECLAIM uses its own language UI, so keep the application flush. */
+body {
+  top: 0 !important;
+  position: static !important;
+}
+
+html.dark-mode body {
+  background-color: #08111f;
+  color: #e2e8f0;
+}
+
+html.dark-mode #root {
+  filter: brightness(0.66) saturate(0.84) contrast(1.08);
+}
+
+html.dark-mode {
+  background-color: #08111f;
+  color-scheme: dark;
+}
+
+html.dark-mode * {
+  scrollbar-color: #475569 #0f172a;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+
+@keyframes wave {
+  0%, 100% { height: 8px; }
+  50% { height: 32px; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ai-scan {
+  from { width: 5%; }
+  to { width: 100%; }
+}
+
+.animate-fade-in { animation: fade-in 0.4s ease both; }
+.animate-slide-up { animation: slide-up 0.5s ease both; }
+.animate-pulse-ring { animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+.animate-spin-slow { animation: spin-slow 2s linear infinite; }
+.animate-ai-scan { animation: ai-scan 2.5s ease-out forwards; }
+
+.wave-bar { animation: wave 1s ease-in-out infinite; }
+.wave-bar:nth-child(2) { animation-delay: 0.1s; }
+.wave-bar:nth-child(3) { animation-delay: 0.2s; }
+.wave-bar:nth-child(4) { animation-delay: 0.3s; }
+.wave-bar:nth-child(5) { animation-delay: 0.15s; }
+.wave-bar:nth-child(6) { animation-delay: 0.25s; }
+.wave-bar:nth-child(7) { animation-delay: 0.05s; }

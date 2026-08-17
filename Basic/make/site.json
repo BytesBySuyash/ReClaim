@@ -1,0 +1,11 @@
+{
+  "title": "RECLAIM - Disaster Recovery Platform",
+  "description": "Empowering disaster victims with a comprehensive recovery platform, this app offers multilingual reporting, AI-driven insights, and tailored recovery plans.",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

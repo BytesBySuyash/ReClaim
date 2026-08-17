@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RECLAIM - Disaster Recovery Platform</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="google_translate_element" class="google-translate-control" aria-hidden="true"></div>
+    <script>
+      (function () {
+        var language = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('reclaim-language');
+        if (language && language !== 'en') {
+          document.cookie = 'googtrans=/en/' + language + '; path=/; SameSite=Lax';
+        }
+      })();
+      window.googleTranslateElementInit = function () {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'as,bn,brx,doi,en,gu,hi,kn,kok,ks,mai,ml,mni,mr,ne,or,pa,sa,sat,sd,ta,te,ur',
+            autoDisplay: false,
+          },
+          'google_translate_element',
+        );
+      };
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
