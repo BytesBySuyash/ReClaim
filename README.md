@@ -1,61 +1,63 @@
-# RECLAIM — Disaster Recovery Platform
+# RECLAIM
 
-RECLAIM is a multilingual, role-based disaster recovery experience built with React, TypeScript, Vite, and Tailwind CSS. It demonstrates reporting, evidence collection, recovery planning, local assistance, and dashboards for citizens, field workers, NGOs, and government teams.
+RECLAIM is a browser-based disaster recovery demo. It brings together a citizen reporting flow and sample dashboards for field workers, NGOs, and government teams.
 
-> **Prototype notice:** This repository is a front-end demonstration. It has no backend, and its reports, AI analysis, dashboards, and sample figures are not operational or verified. Do not enter real survivor data or use this prototype to make emergency, financial, or eligibility decisions.
+The app does not send reports to a server. Its case details, dashboard figures, and analysis results are sample content. Please use fictional details in the demo; it is not ready to handle real survivor information or guide emergency or benefit decisions.
 
-## Preview
+## Screenshots
 
-Screenshots: [Citizen experience](docs/screenshots/citizen.png) · [Operations dashboard](docs/screenshots/operations.png)
+**Citizen reporting**
 
-## Run locally
+![Citizen reporting screen](docs/screenshots/citizen.png)
 
-Requirements: Node.js 22 and npm.
+**Organization dashboard**
+
+![Organization dashboard](docs/screenshots/operations.png)
+
+## Run it locally
+
+Use Node.js 22 and npm:
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Vite prints the local URL. To run the release checks and production build:
+Vite prints the local address. Before sharing a change, run:
 
 ```bash
 npm run typecheck
 npm run build
-npm run preview
 ```
 
-## Main features
+To preview the production build locally, run `npm run preview` after building.
 
-- Citizen recovery flow with reporting, evidence, analysis, profile, recovery plan, and resources.
-- Role views for citizens, field workers, NGOs, and government teams.
-- Demonstration disaster data and map-based views.
-- Language selection, URL state, and browser-persisted preferences.
-- Responsive UI built with Tailwind CSS v4.
+## What is included
 
-## Project layout
+- A citizen flow for reporting damage, adding evidence, reviewing an analysis, and finding recovery resources.
+- Separate screens for field workers, NGOs, and government teams.
+- Sample disaster records and map views.
+- Language and disaster selection, with the current selection reflected in the URL.
 
-- `src/App.tsx` — app shell, navigation, language/disaster selection, and URL state.
-- `src/views/` — role-specific screens.
-- `src/components/` — shared features, maps, and recovery toolkit.
-- `src/data/disasters.ts` — bundled demonstration data.
-- `src/i18n/strings.ts` — interface translations.
-- `docs/` — architecture, release checklist, and screenshots.
+The analysis screen displays fixed sample results; it does not call an analysis service.
 
-## Deploy
+## Where things live
 
-GitHub Actions is configured to check pull requests and deploy `main` to GitHub Pages. In the repository settings, open **Pages** and select **GitHub Actions** as the build and deployment source. After the first successful deployment, the project URL is expected to be:
+- `src/App.tsx` contains the app shell and navigation.
+- `src/views/` contains the four role-based screens.
+- `src/components/` contains shared UI, maps, and recovery tools.
+- `src/data/disasters.ts` contains the sample disaster records.
+- `src/i18n/strings.ts` contains the interface copy and translations.
+- `docs/` contains the architecture notes, release checklist, and screenshots.
 
-**https://bytesbysuyash.github.io/ReClaim/**
+## GitHub Pages
 
-Deployment workflow status and the actual published URL are available under the repository's **Actions** and **Settings → Pages** pages. See [deployment and architecture notes](docs/ARCHITECTURE.md) and the [release checklist](docs/RELEASE_CHECKLIST.md).
+The Actions workflows check pull requests and publish `main` to GitHub Pages. In the repository, go to **Settings → Pages** and choose **GitHub Actions** as the publishing source. After a successful deployment, the site should be available at:
 
-## Checks
+https://bytesbysuyash.github.io/ReClaim/
 
-`npm run typecheck` runs TypeScript without emitting files. `npm run build` creates the static production site in `dist/`. GitHub Actions runs both checks on pushes and pull requests targeting `main` before publishing.
+Check the **Actions** tab for the workflow result and **Settings → Pages** for the published address.
 
-There is no automated unit or end-to-end test suite in this repository yet.
+## Data and external services
 
-## Data and privacy
-
-Language and theme preferences and a recovery draft indicator are stored in the browser. The app loads Google Fonts, Google Translate, and OpenStreetMap tiles from third parties. Review the [architecture notes](docs/ARCHITECTURE.md) before using the project beyond a local or public demo.
+The app saves the selected language, theme, and recovery draft flag in browser storage. It loads fonts and translated text from Google and map tiles from OpenStreetMap. See [how the app is put together](docs/ARCHITECTURE.md) and the [release checklist](docs/RELEASE_CHECKLIST.md) before making changes for a public release.

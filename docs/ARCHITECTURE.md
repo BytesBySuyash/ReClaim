@@ -1,22 +1,22 @@
-# Architecture
+# How the app is put together
 
-RECLAIM is a client-side React application built with Vite, TypeScript, and Tailwind CSS v4.
+RECLAIM is a React app built with TypeScript, Vite, and Tailwind CSS.
 
-## Runtime flow
+## App flow
 
-1. `index.html` loads `src/main.tsx`, which mounts `src/App.tsx`.
-2. `App` holds the selected role, disaster, and language; role/disaster state is reflected in the URL.
-3. `src/views/` contains the citizen, field worker, NGO, and government experiences.
-4. `src/data/disasters.ts` supplies the bundled demonstration data used by dashboards and maps.
-5. `src/components/` contains shared recovery tools, maps, feature controls, and error handling.
-6. `src/i18n/strings.ts` contains the interface strings available in the app. Google Translate is loaded by the browser for other selected languages.
+- `index.html` loads `src/main.tsx`, which mounts `src/App.tsx`.
+- `App` tracks the selected role, disaster, and language. The role and disaster are reflected in the URL.
+- `src/views/` holds the citizen, field worker, organization, and government screens. Each screen is loaded when selected.
+- `src/data/disasters.ts` supplies the sample records shown in the dashboards and maps.
+- `src/components/` holds shared tools, maps, and UI features.
+- `src/i18n/strings.ts` contains the translations included with the app. Google Translate handles the other language choices in the browser.
 
-## Data and privacy boundary
+## What the demo stores and loads
 
-There is no API server or database in this repository. Reports, dashboards, maps, and AI analysis are a front-end demonstration using bundled sample data and browser interactions. Do not enter real survivor information or treat the displayed estimates, eligibility information, or guidance as verified decisions. Before production use, connect an authenticated backend, define retention and consent policies, validate official resources, and review security and accessibility requirements.
+There is no API server or database. Nothing in the reporting flow is submitted to a service. Dashboard figures, case details, and analysis results are sample content; they should not be used to assess real cases or determine eligibility.
 
-Theme preference, language selection, and the recovery draft flag use browser local storage. The app also loads Google Fonts, Google Translate, OpenStreetMap tiles, and map attribution resources from third parties when used.
+The browser stores the selected language, theme, and recovery draft flag. The app also loads Google Fonts, Google Translate, and OpenStreetMap tiles when needed.
 
-## Build and hosting
+## Build and publish
 
-Run `npm ci`, `npm run typecheck`, and `npm run build`. The GitHub Pages workflow publishes `dist` from `main` at `https://bytesbysuyash.github.io/ReClaim/` after Pages is configured to use GitHub Actions as its source.
+Run `npm ci`, `npm run typecheck`, and `npm run build`. The Pages workflow publishes the `dist` folder from `main`. Set the repository's Pages source to **GitHub Actions**. The expected address is https://bytesbysuyash.github.io/ReClaim/.

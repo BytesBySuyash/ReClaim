@@ -1,19 +1,14 @@
-# Release checklist
+# Before you publish
 
-## Before release
+- [ ] Check the changes and make sure the commit does not include credentials or real case information.
+- [ ] Run `npm ci`, `npm run typecheck`, and `npm run build`, or confirm those checks passed in GitHub Actions.
+- [ ] Open each role screen and try the language and disaster selectors.
+- [ ] Check the layout at phone and desktop widths. Try the main controls with a keyboard.
+- [ ] Check map attribution and follow the external links.
+- [ ] Confirm sample figures and public service links are labeled clearly. Verify official resources before presenting them as current.
+- [ ] Update the screenshots in `docs/screenshots/` if the screens have changed.
+- [ ] After publishing, open the Pages address and check the deployment run in **Actions**.
 
-- [ ] Review the repository diff and confirm no private keys, credentials, or survivor data are included.
-- [ ] Run `npm ci`, `npm run typecheck`, and `npm run build` locally or confirm the GitHub Actions checks pass.
-- [ ] Exercise the language, disaster, and role selectors and the citizen recovery flow in a browser.
-- [ ] Check the responsive layout, keyboard access, map attribution, and external links.
-- [ ] Confirm all sample figures and emergency or benefit resources are clearly identified and current before any real-world use.
-- [ ] Replace or supplement the screenshots in `docs/screenshots/` if the interface changes.
-- [ ] Confirm the deployment URL and GitHub Pages workflow status after publishing.
+## Current gaps
 
-## Current limitations to resolve before real deployment
-
-- This repository is a front-end demonstration and has no server-side persistence, authentication, authorization, or submission API.
-- The dashboard values and AI analysis are demonstration data, not operational predictions or eligibility decisions.
-- Google Translate, Google Fonts, and OpenStreetMap introduce third-party network dependencies.
-- No automated unit, integration, or browser tests are currently included.
-- Review every public-facing helpline, scheme, and document replacement instruction with its official source before operational use.
+This is still a front-end demo. It has no account system, server-side storage, or report submission service. The dashboards and analysis use sample data. There are no automated unit or browser tests yet. Google Translate, Google Fonts, and OpenStreetMap require third-party network access.
