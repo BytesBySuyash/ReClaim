@@ -8,11 +8,11 @@ The app does not send reports to a server. Its case details, dashboard figures, 
 
 **Citizen reporting**
 
-![Citizen reporting screen](docs/screenshots/citizen.png)
+![RECLAIM citizen reporting screen](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/citizen.png)
 
 **Organization dashboard**
 
-![Organization dashboard](docs/screenshots/operations.png)
+![RECLAIM organization dashboard](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/operations.png)
 
 ## Run it locally
 
