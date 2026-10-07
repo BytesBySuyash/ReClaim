@@ -1,63 +1,85 @@
 # RECLAIM
 
-RECLAIM is a browser-based disaster recovery demo. It brings together a citizen reporting flow and sample dashboards for field workers, NGOs, and government teams.
+**A disaster recovery coordination demo built with React, TypeScript, and Vite.**
 
-The app does not send reports to a server. Its case details, dashboard figures, and analysis results are sample content. Please use fictional details in the demo; it is not ready to handle real survivor information or guide emergency or benefit decisions.
+RECLAIM brings four perspectives into one interface: a resident reporting losses, a field worker verifying a household, an organization coordinating response, and a government team reviewing activity across disaster events.
 
-## Screenshots
+[Open the demo](https://bytesbysuyash.github.io/ReClaim/) · [Browse the source](https://github.com/BytesBySuyash/ReClaim)
 
-**Citizen reporting**
+> **Demo data:** This is a front-end work sample. Reports are not sent to a server, and the case records, dashboard figures, and analysis results are examples. Use fictional information only.
 
-![RECLAIM citizen reporting screen](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/citizen.png)
+## Screens from the demo
 
-**Organization dashboard**
+The screenshots below show the app at desktop size. The records and names shown are sample data.
 
-![RECLAIM organization dashboard](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/operations.png)
+| Citizen reporting | Recovery plan |
+| --- | --- |
+| ![Citizen reporting screen with voice and text reporting](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/citizen.png) | ![Recovery plan arranged by time horizon](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/recovery-plan.png) |
 
-## Run it locally
+| Field response | Organization operations |
+| --- | --- |
+| ![Field worker assignment queue with verification and evidence tools](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/field-worker.png) | ![Organization household dashboard with vulnerability and response status](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/operations.png) |
 
-Use Node.js 22 and npm:
+**Government overview**
+
+![Government dashboard summarizing disaster events, household counts, and relief activity](https://raw.githubusercontent.com/BytesBySuyash/ReClaim/main/docs/screenshots/government.png)
+
+## What you can explore
+
+- **Citizen / Victim:** Explore the reporting, evidence, household profile, recovery plan, and help resources screens. The voice control inserts a sample transcript; it is not live speech recognition.
+- **Field Worker:** Review assigned households, verification tasks, evidence capture, and field notes.
+- **Organization:** Review household priorities, recovery intelligence, map views, field workers, budgets, and schemes.
+- **Government:** Compare active events and open district, scheme, budget, and map views.
+
+Use the top controls to switch roles, change the selected disaster, and choose a language. There is no login. Some selections are reflected in the URL, so a view can be shared or reopened directly.
+
+## What this project demonstrates
+
+- A single app shell connecting four role-specific workflows over the same disaster data.
+- Typed React components with reusable UI and a shared data model for households, interventions, and disaster events.
+- URL-backed role and disaster selection, plus browser-stored language and theme preferences.
+- Map-based views using React Leaflet, with dashboard screens loaded on demand to keep the initial bundle smaller.
+- A release workflow that runs TypeScript checks and a production build, then publishes the static site through GitHub Pages.
+
+The analysis screen is a visual demonstration with fixed sample results. It does not call an AI or analysis service.
+
+## Run locally
+
+Requirements: Node.js 22 and npm.
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Vite prints the local address. Before sharing a change, run:
+Vite prints the local URL. Check a change and build the static site with:
 
 ```bash
 npm run typecheck
 npm run build
 ```
 
-To preview the production build locally, run `npm run preview` after building.
+To serve the production build locally, run `npm run preview` after building.
 
-## What is included
+## Tech stack
 
-- A citizen flow for reporting damage, adding evidence, reviewing an analysis, and finding recovery resources.
-- Separate screens for field workers, NGOs, and government teams.
-- Sample disaster records and map views.
-- Language and disaster selection, with the current selection reflected in the URL.
+- React 19 and TypeScript
+- Vite 8
+- Tailwind CSS 4
+- React Leaflet and Leaflet
+- GitHub Actions for checks and GitHub Pages deployment
 
-The analysis screen displays fixed sample results; it does not call an analysis service.
+## Project map
 
-## Where things live
+- `src/App.tsx` — app shell, navigation, and role, disaster, and language selection.
+- `src/views/` — citizen, field worker, organization, and government screens.
+- `src/components/` — shared tools, recovery UI, maps, and feature controls.
+- `src/data/disasters.ts` — bundled sample events and household data.
+- `src/i18n/strings.ts` — interface translations included with the app.
+- `docs/` — architecture notes, release checklist, and screenshots.
 
-- `src/App.tsx` contains the app shell and navigation.
-- `src/views/` contains the four role-based screens.
-- `src/components/` contains shared UI, maps, and recovery tools.
-- `src/data/disasters.ts` contains the sample disaster records.
-- `src/i18n/strings.ts` contains the interface copy and translations.
-- `docs/` contains the architecture notes, release checklist, and screenshots.
+## Known limits
 
-## GitHub Pages
+This demo has no backend, accounts, or report submission service. Its analysis, household records, and dashboard figures are sample content, not real assessments. The app uses Google Translate and Google Fonts, and map tiles from OpenStreetMap; those features need a network connection. There is no automated unit or browser test suite yet.
 
-The Actions workflows check pull requests and publish `main` to GitHub Pages. In the repository, go to **Settings → Pages** and choose **GitHub Actions** as the publishing source. After a successful deployment, the site should be available at:
-
-https://bytesbysuyash.github.io/ReClaim/
-
-Check the **Actions** tab for the workflow result and **Settings → Pages** for the published address.
-
-## Data and external services
-
-The app saves the selected language, theme, and recovery draft flag in browser storage. It loads fonts and translated text from Google and map tiles from OpenStreetMap. See [how the app is put together](docs/ARCHITECTURE.md) and the [release checklist](docs/RELEASE_CHECKLIST.md) before making changes for a public release.
+For more detail, see [how the app is put together](docs/ARCHITECTURE.md) and [before you publish](docs/RELEASE_CHECKLIST.md).
