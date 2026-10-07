@@ -1,6 +1,6 @@
 # RECLAIM
 
-A comprehensive disaster recovery platform empowering victims with multilingual reporting, AI-driven insights, and tailored recovery plans. Built with React + Vite + Tailwind CSS.
+RECLAIM is a disaster recovery demo with multilingual reporting, household reviews, and recovery plans. It is built with React, Vite, and Tailwind CSS.
 
 ## Development Server
 

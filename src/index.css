@@ -104,7 +104,7 @@ html.dark-mode * {
   to { transform: rotate(360deg); }
 }
 
-@keyframes ai-scan {
+@keyframes analysis-progress {
   from { width: 5%; }
   to { width: 100%; }
 }
@@ -113,7 +113,7 @@ html.dark-mode * {
 .animate-slide-up { animation: slide-up 0.5s ease both; }
 .animate-pulse-ring { animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
 .animate-spin-slow { animation: spin-slow 2s linear infinite; }
-.animate-ai-scan { animation: ai-scan 2.5s ease-out forwards; }
+.animate-analysis-progress { animation: analysis-progress 2.5s ease-out forwards; }
 
 .wave-bar { animation: wave 1s ease-in-out infinite; }
 .wave-bar:nth-child(2) { animation-delay: 0.1s; }

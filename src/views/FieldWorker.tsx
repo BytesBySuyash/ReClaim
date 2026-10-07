@@ -132,7 +132,7 @@ export default function FieldWorker({
           style={{ backgroundColor: "#DCFCE7", color: "#15803D" }}
         >
           <span>📶</span>
-          <span>Data synced 4 min ago. Offline mode ready.</span>
+          <span>Sample data loaded. Offline demo ready.</span>
         </div>
 
         <div className="flex-1 overflow-auto py-3 px-3 space-y-2">
@@ -448,7 +448,7 @@ export default function FieldWorker({
               className="mt-3 rounded-lg px-4 py-2 text-xs text-center"
               style={{ backgroundColor: "#DCFCE7", color: "#15803D" }}
             >
-              ✓ Report will sync to RECLAIM server automatically when connected
+              This sample report stays in the demo and is not sent to a server.
             </div>
           </div>
         </div>

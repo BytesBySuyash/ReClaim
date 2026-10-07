@@ -41,7 +41,7 @@ Use the top controls to switch roles, change the selected disaster, and choose a
 - Map-based views using React Leaflet, with dashboard screens loaded on demand to keep the initial bundle smaller.
 - A release workflow that runs TypeScript checks and a production build, then publishes the static site through GitHub Pages.
 
-The analysis screen is a visual demonstration with fixed sample results. It does not call an AI or analysis service.
+The analysis screen displays fixed sample results; it does not run a live analysis service.
 
 ## Run locally
 

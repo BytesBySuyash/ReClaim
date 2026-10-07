@@ -133,7 +133,7 @@ export default function FeatureSuite({
               className="text-xs font-bold uppercase tracking-wider"
               style={{ color: "#0369A1" }}
             >
-              RECLAIM intelligence
+              Response tools
             </p>
             <h2
               className="text-xl font-bold"
@@ -152,12 +152,12 @@ export default function FeatureSuite({
             <div className="flex items-center justify-between gap-3">
               <div>
                 <h3 className="text-xs font-bold" style={{ color: "#0B1D3A" }}>
-                  Judge demo launcher
+                  Sample scenario
                 </h3>
                 <p className="mt-0.5 text-[10px]" style={{ color: "#92400e" }}>
                   {demoStarted
-                    ? `${demoScenario} journey loaded for walkthrough`
-                    : "Load a realistic recovery journey in one click."}
+                    ? `${demoScenario} example is ready to explore.`
+                    : "Choose a sample situation to explore the recovery flow."}
                 </p>
               </div>
               <button
@@ -165,7 +165,7 @@ export default function FeatureSuite({
                 className="rounded-lg px-2.5 py-1.5 text-[10px] font-bold"
                 style={{ backgroundColor: "#0B1D3A", color: "white" }}
               >
-                Run demo
+                Start scenario
               </button>
             </div>
             <div className="mt-2 flex flex-wrap gap-1.5">
@@ -227,11 +227,11 @@ function CitizenTools({
     <div className="space-y-4">
       <section className="rounded-2xl border p-4" style={panel}>
         <h3 className="text-sm font-bold" style={{ color: "#0B1D3A" }}>
-          AI recovery co-pilot
+          Recovery guide
         </h3>
         <p className="mt-1 text-xs" style={{ color: "#64748b" }}>
-          Ask in your own words. Guidance is tailored to your report and never
-          submits a claim for you.
+          Ask about possible next steps. Replies use prepared examples and do
+          not submit a claim.
         </p>
         <div className="mt-3 flex gap-2">
           <input
@@ -239,7 +239,7 @@ function CitizenTools({
             onChange={(event) => setQuestion(event.target.value)}
             className="min-w-0 flex-1 rounded-lg border px-2 py-2 text-xs"
             style={{ borderColor: "#cbd5e1" }}
-            aria-label="Ask the recovery co-pilot"
+            aria-label="Ask the recovery guide"
           />
           <button
             onClick={() =>
@@ -247,7 +247,7 @@ function CitizenTools({
                 question.toLowerCase().includes("document")
                   ? "For lost documents: add any photo or copy you have, then use the Aadhaar replacement and ration-card support links in your recovery plan."
                   : question.toLowerCase().includes("money")
-                    ? "Your plan prioritises verified relief and livelihood support. Do not pay anyone to access disaster assistance."
+                    ? "In this sample, relief and livelihood support are possible next steps. Never pay anyone to access disaster assistance."
                     : "Your next best step is to capture evidence, complete your household profile, and review the matched support schemes.",
               )
             }
@@ -268,10 +268,10 @@ function CitizenTools({
         <div className="flex items-center justify-between gap-2">
           <div>
             <h3 className="text-sm font-bold" style={{ color: "#0B1D3A" }}>
-              Why you may qualify
+              Example eligibility notes
             </h3>
             <p className="mt-1 text-xs" style={{ color: "#64748b" }}>
-              Explainable matching, not a black-box decision.
+              Sample factors that could appear in an eligibility review.
             </p>
           </div>
           <button
@@ -284,19 +284,19 @@ function CitizenTools({
         </div>
         {eligibilityOpen && (
           <ul className="mt-3 space-y-2 text-xs" style={{ color: "#475569" }}>
-            <li>✓ Verified household damage supports NDRF relief review.</li>
+            <li>Example: reported household damage may be relevant to relief review.</li>
             <li>
-              ✓ Lost identity documents trigger Aadhaar replacement support.
+              Example: lost identity documents may call for replacement guidance.
             </li>
             <li>
-              ✓ Livelihood equipment loss supports restart-grant assessment.
+              Example: livelihood losses may be considered for restart support.
             </li>
           </ul>
         )}
       </section>
       <section className="rounded-2xl border p-4" style={panel}>
         <h3 className="text-sm font-bold" style={{ color: "#0B1D3A" }}>
-          Household recovery timeline
+          Sample household recovery timeline
         </h3>
         <div className="mt-4 flex items-end gap-2 h-24">
           {[42, 47, 45, 58, 67, 74, 79].map((score, i) => (
@@ -322,11 +322,10 @@ function CitizenTools({
       </section>
       <section className="rounded-2xl border p-4" style={panel}>
         <h3 className="text-sm font-bold" style={{ color: "#0B1D3A" }}>
-          Grievance & score review
+          Sample score review
         </h3>
         <p className="mt-1 text-xs" style={{ color: "#64748b" }}>
-          Think your recovery score misses important circumstances? Ask for an
-          NGO review.
+          Explore how a score review request could appear in the app.
         </p>
         <button
           onClick={onDispute}
@@ -336,26 +335,26 @@ function CitizenTools({
             color: disputeSent ? "#166534" : "white",
           }}
         >
-          {disputeSent ? "✓ Review request submitted" : "Contest my HRVS score"}
+          {disputeSent ? "Sample review noted" : "Try a sample review request"}
         </button>
       </section>
       <section className="rounded-2xl border p-4" style={panel}>
         <h3 className="text-sm font-bold" style={{ color: "#0B1D3A" }}>
-          Offline sync queue
+          Sample offline queue
         </h3>
         <div
           className="mt-2 flex items-center justify-between text-xs"
           style={{ color: "#64748b" }}
         >
           <span>
-            {synced ? "All reports synced" : "2 photos + 1 update waiting"}
+            {synced ? "Sample queue reviewed" : "Example queue: 2 photos + 1 update"}
           </span>
           <button
             onClick={() => setSynced(true)}
             style={{ color: "#0369A1" }}
             className="font-semibold"
           >
-            Sync now
+            Review sample queue
           </button>
         </div>
       </section>
@@ -409,7 +408,7 @@ function FieldTools({ disaster }: { disaster: Disaster }) {
           Offline sync queue
         </h3>
         <p className="mt-2 text-xs" style={{ color: "#64748b" }}>
-          3 visits, 18 photos and 2 signatures are encrypted and ready to sync.
+          Sample queue: 3 visits, 18 photos, and 2 signatures. Nothing is uploaded or synced.
         </p>
       </section>
     </div>

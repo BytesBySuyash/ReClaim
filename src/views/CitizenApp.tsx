@@ -41,7 +41,7 @@ const UI: Record<string, Record<string, string>> = {
     uploadSub:
       "Upload photos, bills, or documents that show what was damaged or lost.",
     privacyNote:
-      "Your information is private and encrypted. It will only be shared with verified relief organizations with your consent.",
+      "This demo does not upload files or send report details to a server.",
     continueBtn: "Continue",
     skipBtn: "Upload Later",
     yourProfile: "Your Recovery Profile",
@@ -65,7 +65,7 @@ function t(lang: string, key: string): string {
   return (UI[lang] ?? UI.en)[key] ?? UI.en[key] ?? key
 }
 
-const AI_DETECTIONS = [
+const SAMPLE_DETECTIONS = [
   {
     asset: "Sewing Machine",
     category: "Livelihood Equipment",
@@ -378,12 +378,12 @@ function VictimHomeOverview({
 
       {showMoreHelp && <>
       <div className="mb-6 grid gap-3 sm:grid-cols-3">
-        {[['0%', 'Report complete', 'Start with your story'], ['0', 'Evidence added', 'Photos, bills, documents'], ['Next step', 'Tell us what happened', 'Your report is saved privately']].map(([value, label, note]) => <div key={label} className="rounded-xl border p-4" style={{ backgroundColor: surface, borderColor: '#E2E8F0' }}><p className="text-lg font-bold" style={{ color: ink }}>{value}</p><p className="mt-1 text-xs font-semibold" style={{ color: ink }}>{label}</p><p className="mt-1 text-[11px]" style={{ color: highContrast ? '#374151' : '#64748B' }}>{note}</p></div>)}
+        {[['0%', 'Report complete', 'Start with your story'], ['0', 'Evidence added', 'Photos, bills, documents'], ['Next step', 'Tell us what happened', 'This demo does not submit reports']].map(([value, label, note]) => <div key={label} className="rounded-xl border p-4" style={{ backgroundColor: surface, borderColor: '#E2E8F0' }}><p className="text-lg font-bold" style={{ color: ink }}>{value}</p><p className="mt-1 text-xs font-semibold" style={{ color: ink }}>{label}</p><p className="mt-1 text-[11px]" style={{ color: highContrast ? '#374151' : '#64748B' }}>{note}</p></div>)}
       </div>
 
       <div className="mb-6 grid gap-4 lg:grid-cols-2">
-        <div className="rounded-2xl border p-5" style={{ backgroundColor: surface, borderColor: '#BFDBFE' }}><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#0369A1' }}>AI recovery insight</p><h3 className="mt-1 font-bold" style={{ color: ink }}>Support tailored to your loss</h3></div><span className="rounded-full px-2 py-1 text-[10px] font-bold" style={{ backgroundColor: '#DCFCE7', color: '#166534' }}>Private & secure</span></div><div className="mt-4 rounded-xl p-3" style={{ backgroundColor: '#EFF6FF' }}><p className="text-xs font-semibold" style={{ color: '#1E3A8A' }}>We can identify damaged items and likely support options from your report.</p><p className="mt-1 text-[11px] leading-relaxed" style={{ color: '#475569' }}>You always review and correct suggestions before they are shared.</p></div><button type="button" onClick={onStartReport} className="mt-4 text-xs font-bold" style={{ color: '#0369A1' }}>See how AI helps →</button></div>
-        <div className="rounded-2xl border p-5" style={{ backgroundColor: surface, borderColor: '#BBF7D0' }}><p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#15803D' }}>Nearby verified support</p><div className="relative mt-3 h-24 overflow-hidden rounded-xl" style={{ background: 'linear-gradient(135deg, #DCFCE7, #DBEAFE)' }}><div className="absolute left-[18%] top-[22%] h-3 w-3 rounded-full border-2 border-white" style={{ backgroundColor: '#15803D' }} /><div className="absolute right-[22%] top-[42%] h-3 w-3 rounded-full border-2 border-white" style={{ backgroundColor: '#0369A1' }} /><div className="absolute left-[43%] bottom-[18%] h-3 w-3 rounded-full border-2 border-white" style={{ backgroundColor: '#C2410C' }} /><div className="absolute inset-x-0 top-1/2 border-t border-dashed" style={{ borderColor: '#93C5FD' }} /></div><div className="mt-3 flex items-center justify-between"><div><p className="text-xs font-bold" style={{ color: ink }}>3 verified centres near you</p><p className="text-[11px]" style={{ color: '#64748B' }}>Shelter, medical care and NGO support</p></div><button type="button" onClick={onOpenResources} className="text-xs font-bold" style={{ color: '#15803D' }}>View support →</button></div></div>
+        <div className="rounded-2xl border p-5" style={{ backgroundColor: surface, borderColor: '#BFDBFE' }}><div className="flex items-start justify-between gap-3"><div><p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#0369A1' }}>Recovery suggestions</p><h3 className="mt-1 font-bold" style={{ color: ink }}>Support matched to your needs</h3></div><span className="rounded-full px-2 py-1 text-[10px] font-bold" style={{ backgroundColor: '#DCFCE7', color: '#166534' }}>Demo content</span></div><div className="mt-4 rounded-xl p-3" style={{ backgroundColor: '#EFF6FF' }}><p className="text-xs font-semibold" style={{ color: '#1E3A8A' }}>See how reported damage and possible support options could be presented.</p><p className="mt-1 text-[11px] leading-relaxed" style={{ color: '#475569' }}>Review the example suggestions and decide what applies to your situation.</p></div><button type="button" onClick={onStartReport} className="mt-4 text-xs font-bold" style={{ color: '#0369A1' }}>Explore the reporting flow →</button></div>
+        <div className="rounded-2xl border p-5" style={{ backgroundColor: surface, borderColor: '#BBF7D0' }}><p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#15803D' }}>Example local support</p><div className="relative mt-3 h-24 overflow-hidden rounded-xl" style={{ background: 'linear-gradient(135deg, #DCFCE7, #DBEAFE)' }}><div className="absolute left-[18%] top-[22%] h-3 w-3 rounded-full border-2 border-white" style={{ backgroundColor: '#15803D' }} /><div className="absolute right-[22%] top-[42%] h-3 w-3 rounded-full border-2 border-white" style={{ backgroundColor: '#0369A1' }} /><div className="absolute left-[43%] bottom-[18%] h-3 w-3 rounded-full border-2 border-white" style={{ backgroundColor: '#C2410C' }} /><div className="absolute inset-x-0 top-1/2 border-t border-dashed" style={{ borderColor: '#93C5FD' }} /></div><div className="mt-3 flex items-center justify-between"><div><p className="text-xs font-bold" style={{ color: ink }}>3 example support centres</p><p className="text-[11px]" style={{ color: '#64748B' }}>Sample shelter, medical and NGO listings</p></div><button type="button" onClick={onOpenResources} className="text-xs font-bold" style={{ color: '#15803D' }}>View support →</button></div></div>
       </div>
 
       <div className="mb-6 rounded-2xl border p-5" style={{ backgroundColor: surface, borderColor: '#E2E8F0' }}><div className="flex flex-wrap items-end justify-between gap-2"><div><p className="text-xs font-bold uppercase tracking-wider" style={{ color: '#A16207' }}>Document recovery assistant</p><h3 className="mt-1 font-bold" style={{ color: ink }}>Lost an important document?</h3></div><button type="button" onClick={onOpenResources} className="text-xs font-bold" style={{ color: '#0369A1' }}>View all guides →</button></div><div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">{['Aadhaar', 'Ration card', 'Bank records', 'School certificate'].map((document) => <button type="button" key={document} onClick={onOpenResources} className="rounded-xl border p-3 text-left transition-transform hover:-translate-y-0.5" style={{ backgroundColor: '#FFFFFF', borderColor: '#E2E8F0' }}><span className="text-base">□</span><p className="mt-1 text-xs font-bold" style={{ color: ink }}>{document}</p><p className="mt-1 text-[10px]" style={{ color: '#64748B' }}>How to replace</p></button>)}</div></div>
@@ -393,7 +393,7 @@ function VictimHomeOverview({
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3 rounded-xl border px-4 py-3" style={{ backgroundColor: '#FFFFFF', borderColor: '#E2E8F0' }}><div><p className="text-xs font-bold" style={{ color: ink }}>Make RECLAIM easier to use</p><p className="text-[11px]" style={{ color: '#64748B' }}>Choose comfortable display settings for this page.</p></div><div className="flex gap-2"><button type="button" onClick={() => setLargeText(!largeText)} className="rounded-lg border px-3 py-2 text-xs font-semibold" style={{ borderColor: largeText ? '#0B1D3A' : '#CBD5E1', backgroundColor: largeText ? '#0B1D3A' : '#FFFFFF', color: largeText ? '#FFFFFF' : ink }}>A+ Large text</button><button type="button" onClick={() => setHighContrast(!highContrast)} className="rounded-lg border px-3 py-2 text-xs font-semibold" style={{ borderColor: highContrast ? '#000000' : '#CBD5E1', backgroundColor: highContrast ? '#000000' : '#FFFFFF', color: highContrast ? '#FFFFFF' : ink }}>High contrast</button></div></div>
       </>}
 
-      <div className="mb-6 flex items-center justify-between gap-4 rounded-xl p-4" style={{ backgroundColor: '#ECFDF5' }}><div><p className="text-xs font-bold" style={{ color: '#166534' }}>Trusted by communities rebuilding after disaster</p><p className="mt-1 text-[11px]" style={{ color: '#15803D' }}>Private reports • Verified partners • Recovery support built around you</p></div><button type="button" onClick={() => setHelpRequested(true)} className="shrink-0 rounded-lg px-3 py-2 text-xs font-bold" style={{ backgroundColor: helpRequested ? '#DCFCE7' : '#15803D', color: helpRequested ? '#166534' : '#FFFFFF' }}>{helpRequested ? 'Help request sent' : 'Request a visit'}</button></div>
+      <div className="mb-6 flex items-center justify-between gap-4 rounded-xl p-4" style={{ backgroundColor: '#ECFDF5' }}><div><p className="text-xs font-bold" style={{ color: '#166534' }}>Sample community support</p><p className="mt-1 text-[11px]" style={{ color: '#15803D' }}>Example partner listings • Recovery guidance • Demo requests</p></div><button type="button" onClick={() => setHelpRequested(true)} className="shrink-0 rounded-lg px-3 py-2 text-xs font-bold" style={{ backgroundColor: helpRequested ? '#DCFCE7' : '#15803D', color: helpRequested ? '#166534' : '#FFFFFF' }}>{helpRequested ? 'Demo request noted' : 'Try a sample request'}</button></div>
     </section>
   )
 }
@@ -401,7 +401,7 @@ function VictimHomeOverview({
 const CHAT_FAQS = [
   ["What should I do first?", "Prioritise safety, take photos of damage if it is safe, and tell us about lost documents or income."],
   ["What evidence can I upload?", "Upload damage photos, videos, bills, identity documents, and any useful witness details."],
-  ["Is my information private?", "Yes. Your report is encrypted and shared only with verified relief teams when needed for support."],
+  ["Is my information private?", "This demo does not send report details to a server."],
   ["How do I get emergency help?", "For immediate danger, contact local emergency services. You can also use Help & Resources in RECLAIM to find verified support."],
 ]
 
@@ -411,7 +411,7 @@ function VictimSupportChat() {
   const [reply, setReply] = useState("Hello. I can help you prepare your recovery report or explain the next step.")
   const sendQuestion = () => {
     if (!question.trim()) return
-    setReply("Thanks — start with your story and evidence. A verified support team can follow up if further help is needed.")
+    setReply("Start with your story and evidence. This demo does not send messages or requests to a support team.")
     setQuestion("")
   }
 
@@ -450,7 +450,7 @@ export default function CitizenApp({
   const [whatIfSewing, setWhatIfSewing] = useState(false)
   const [uploadedItems, setUploadedItems] = useState<string[]>([])
   const [fieldToolMessage, setFieldToolMessage] = useState(
-    "Offline vault protected",
+    "Offline demo ready",
   )
 
   const baseScore = 87
@@ -460,7 +460,7 @@ export default function CitizenApp({
   const STEPS = [
     { id: 1, label: "Your Story", icon: "🎙️" },
     { id: 2, label: "Evidence", icon: "📷" },
-    { id: 3, label: "AI Analysis", icon: "🤖" },
+    { id: 3, label: "Recovery Review", icon: "🔎" },
     { id: 4, label: "Your Profile", icon: "📊" },
     { id: 5, label: "Recovery Plan", icon: "📋" },
     { id: 6, label: "Help & Resources", icon: "🆘" },
@@ -596,7 +596,7 @@ export default function CitizenApp({
             className="text-[10px] font-bold uppercase tracking-wider mb-2"
             style={{ color: "#64748b" }}
           >
-            Field-ready tools
+            Demo controls
           </div>
           <div className="space-y-2">
             <button
@@ -605,13 +605,13 @@ export default function CitizenApp({
                 setFieldToolMessage(
                   `${uploadedItems.length || 3} evidence item${
                     (uploadedItems.length || 3) === 1 ? "" : "s"
-                  } queued for secure sync`,
+                  } kept as an on-screen example`,
                 )
               }
               className="w-full rounded-lg px-2.5 py-2 text-left text-xs font-semibold transition-colors"
               style={{ backgroundColor: "#143060", color: "#BFDBFE" }}
             >
-              ↻ Sync offline evidence
+              ↻ Review sample evidence
             </button>
             <button
               type="button"
@@ -627,7 +627,7 @@ export default function CitizenApp({
               className="w-full rounded-lg px-2.5 py-2 text-left text-xs font-semibold transition-colors"
               style={{ backgroundColor: "#0F2347", color: "#A7F3D0" }}
             >
-              ▣ View uploaded evidence
+              ▣ View selected evidence
             </button>
           </div>
           <div
@@ -1016,8 +1016,8 @@ export default function CitizenApp({
                 }}
               >
                 {scanStage === "story"
-                  ? "AI is understanding your story"
-                  : "AI is preparing your evidence review"}
+                  ? "Preparing your report review"
+                  : "Preparing your evidence review"}
               </h2>
               <p
                 className="mt-2 text-sm leading-relaxed"
@@ -1032,18 +1032,18 @@ export default function CitizenApp({
                 style={{ backgroundColor: "#e2e8f0" }}
               >
                 <div
-                  className="h-full rounded-full animate-ai-scan"
+                  className="h-full rounded-full animate-analysis-progress"
                   style={{ backgroundColor: "#0284c7" }}
                 />
               </div>
               <p className="mt-3 text-xs" style={{ color: "#94a3b8" }}>
-                Your files remain private and encrypted.
+                This demo does not upload files or report details.
               </p>
             </div>
           </div>
         )}
 
-        {/* Step 3: AI Analysis */}
+        {/* Step 3: Recovery Review */}
         {step === 3 && (
           <div className="max-w-2xl mx-auto py-10 px-6 animate-slide-up">
             <div className="mb-8">
@@ -1058,7 +1058,7 @@ export default function CitizenApp({
                   className="text-xs font-semibold"
                   style={{ color: "#15803D" }}
                 >
-                  AI Analysis Complete
+                  Sample review ready
                 </span>
               </div>
               <h1
@@ -1071,8 +1071,8 @@ export default function CitizenApp({
                 What RECLAIM found
               </h1>
               <p className="text-sm" style={{ color: "#64748b" }}>
-                Based on your voice report and uploaded evidence, our AI has
-                identified the following assets and losses.
+                These example findings show how a report and its evidence could
+                be summarized.
               </p>
             </div>
 
@@ -1106,7 +1106,7 @@ export default function CitizenApp({
                         className="text-center px-4 py-3 text-xs font-semibold"
                         style={{ color: "#64748b" }}
                       >
-                        AI Confidence
+                        Sample score
                       </th>
                       <th
                         className="text-right px-4 py-3 text-xs font-semibold"
@@ -1117,7 +1117,7 @@ export default function CitizenApp({
                     </tr>
                   </thead>
                   <tbody>
-                    {AI_DETECTIONS.map((d, i) => (
+                    {SAMPLE_DETECTIONS.map((d, i) => (
                       <tr
                         key={d.asset}
                         className="border-t"
