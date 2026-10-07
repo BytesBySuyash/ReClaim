@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react"
-import CitizenApp from "./views/CitizenApp"
-import NGODashboard from "./views/NGODashboard"
-import FieldWorker from "./views/FieldWorker"
-import GovtDashboard from "./views/GovtDashboard"
+import { lazy, Suspense, useState, useEffect } from "react"
 import DISASTERS, { type Disaster } from "./data/disasters"
 import { getStrings } from "./i18n/strings"
-import FeatureSuite from "./components/FeatureSuite"
+const CitizenApp = lazy(() => import("./views/CitizenApp"))
+const NGODashboard = lazy(() => import("./views/NGODashboard"))
+const FieldWorker = lazy(() => import("./views/FieldWorker"))
+const GovtDashboard = lazy(() => import("./views/GovtDashboard"))
+const FeatureSuite = lazy(() => import("./components/FeatureSuite"))
 
 type Role = "citizen" | "fieldworker" | "ngo" | "govt"
 
@@ -234,7 +234,7 @@ export default function App() {
 
   const yc = YEAR_COLORS[disaster.year] ?? YEAR_COLORS[2024]
 
-  const str = getStrings((selectedLang || "en") as any)
+  const str = getStrings(selectedLang || "en")
 
   return (
     <div
@@ -546,27 +546,35 @@ export default function App() {
         />
       )}
 
-      <main id="app-content" className="flex-1 min-h-0 overflow-y-scroll overscroll-contain scroll-smooth">
-        {role === "citizen" && (
-          <CitizenApp
-            disaster={disaster}
-            language={selectedLang || "en"}
-          />
-        )}
-        {role === "fieldworker" && (
-          <FieldWorker disaster={disaster} language={selectedLang || "en"} />
-        )}
-        {role === "ngo" && (
-          <NGODashboard disaster={disaster} language={selectedLang || "en"} />
-        )}
-        {role === "govt" && (
-          <GovtDashboard
-            disasters={DISASTERS}
-            language={selectedLang || "en"}
-          />
-        )}
-      </main>
-      <FeatureSuite role={role} disaster={disaster} />
+      <Suspense
+        fallback={
+          <div className="flex-1 grid place-items-center text-sm text-slate-500">
+            Loading RECLAIM…
+          </div>
+        }
+      >
+        <main id="app-content" className="flex-1 min-h-0 overflow-y-scroll overscroll-contain scroll-smooth">
+          {role === "citizen" && (
+            <CitizenApp
+              disaster={disaster}
+              language={selectedLang || "en"}
+            />
+          )}
+          {role === "fieldworker" && (
+            <FieldWorker disaster={disaster} language={selectedLang || "en"} />
+          )}
+          {role === "ngo" && (
+            <NGODashboard disaster={disaster} language={selectedLang || "en"} />
+          )}
+          {role === "govt" && (
+            <GovtDashboard
+              disasters={DISASTERS}
+              language={selectedLang || "en"}
+            />
+          )}
+        </main>
+        <FeatureSuite role={role} disaster={disaster} />
+      </Suspense>
     </div>
   )
 }

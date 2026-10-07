@@ -1,4 +1,4 @@
-export type Language = "en" | "hi" | "te" | "ml" | "as" | "bn" | "mr" | "ta" | "gu" | "kn"
+export type Language = "en" | "hi" | "te" | "ml" | "as" | "bn"
 
 export type Strings = {
   nav: { citizen: string; fieldworker: string; ngo: string; govt: string }
@@ -818,6 +818,6 @@ export const LANGUAGE_STRINGS: Record<Language, Strings> = {
   bn,
 }
 
-export function getStrings(lang: Language): Strings {
-  return LANGUAGE_STRINGS[lang] ?? LANGUAGE_STRINGS["en"]
+export function getStrings(lang: string): Strings {
+  return LANGUAGE_STRINGS[lang as Language] ?? LANGUAGE_STRINGS["en"]
 }
