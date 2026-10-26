@@ -6,6 +6,7 @@ const NGODashboard = lazy(() => import("./views/NGODashboard"))
 const FieldWorker = lazy(() => import("./views/FieldWorker"))
 const GovtDashboard = lazy(() => import("./views/GovtDashboard"))
 const FeatureSuite = lazy(() => import("./components/FeatureSuite"))
+const ApiWorkspace = lazy(() => import("./views/ApiWorkspace"))
 
 type Role = "citizen" | "fieldworker" | "ngo" | "govt"
 
@@ -56,6 +57,7 @@ function updateUrl(params: URLSearchParams, replace = false) {
 }
 
 function setGoogleTranslateLanguage(language: string) {
+  if (import.meta.env.VITE_DATA_MODE === "api") return
   // Google Translate reads this first-party cookie when its browser widget loads.
   // English deliberately clears it so the original page is restored.
   if (language === "en") {
@@ -82,6 +84,15 @@ export default function App() {
   // Load the Google widget after React has painted, so it can translate every
   // screen instead of scanning the empty #root that exists during HTML parsing.
   useEffect(() => {
+    // API mode keeps story and report content on the configured ReClaim origin.
+    if (import.meta.env.VITE_DATA_MODE === "api") return
+    if (!document.getElementById("reclaim-fonts")) {
+      const fonts = document.createElement("link")
+      fonts.id = "reclaim-fonts"
+      fonts.rel = "stylesheet"
+      fonts.href = "https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      document.head.appendChild(fonts)
+    }
     if (document.getElementById("google-translate-script")) return
 
     const script = document.createElement("script")
@@ -207,9 +218,11 @@ export default function App() {
     params.set("flow", DISASTER_FLOW_PARAM)
     updateUrl(params)
 
-    // Google Translate applies the language cookie while its widget starts.
-    // Reload once, then continue to the disaster selector on the new page.
-    window.location.reload()
+    if (import.meta.env.VITE_DATA_MODE !== "api") {
+      // Google Translate applies the language cookie while its widget starts.
+      // Reload once, then continue to the disaster selector on the new page.
+      window.location.reload()
+    }
   }
 
   const handleOpenLanguageModal = () => {
@@ -554,6 +567,9 @@ export default function App() {
         }
       >
         <main id="app-content" className="flex-1 min-h-0 overflow-y-scroll overscroll-contain scroll-smooth">
+          {import.meta.env.VITE_DATA_MODE === "api" ? (
+            <ApiWorkspace role={role} disaster={disaster} language={selectedLang || "en"} />
+          ) : <>
           {role === "citizen" && (
             <CitizenApp
               disaster={disaster}
@@ -572,9 +588,11 @@ export default function App() {
               language={selectedLang || "en"}
             />
           )}
+          </>}
         </main>
-        <FeatureSuite role={role} disaster={disaster} />
+        {import.meta.env.VITE_DATA_MODE !== "api" && <FeatureSuite role={role} disaster={disaster} />}
       </Suspense>
     </div>
   )
 }
+

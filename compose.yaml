@@ -1,0 +1,21 @@
+services:
+  reclaim:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      RECLAIM_ENV: demo
+      RECLAIM_DATA_DIR: /data
+      RECLAIM_ALLOWED_ORIGINS: ${RECLAIM_ALLOWED_ORIGINS:-http://localhost:8000}
+      RECLAIM_COOKIE_SECURE: ${RECLAIM_COOKIE_SECURE:-false}
+      RECLAIM_SESSION_HOURS: ${RECLAIM_SESSION_HOURS:-24}
+    volumes:
+      - reclaim-data:/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  reclaim-data:

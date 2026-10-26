@@ -9,12 +9,6 @@
     <div id="root"></div>
     <div id="google_translate_element" class="google-translate-control" aria-hidden="true"></div>
     <script>
-      (function () {
-        var language = new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('reclaim-language');
-        if (language && language !== 'en') {
-          document.cookie = 'googtrans=/en/' + language + '; path=/; SameSite=Lax';
-        }
-      })();
       window.googleTranslateElementInit = function () {
         new google.translate.TranslateElement(
           {
@@ -29,3 +23,4 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+
