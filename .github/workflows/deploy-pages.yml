@@ -27,6 +27,9 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run build
+        env:
+          VITE_DATA_MODE: fixture
+          APP_BASE_PATH: /ReClaim/
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
@@ -40,3 +43,4 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+

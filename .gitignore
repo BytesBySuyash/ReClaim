@@ -3,6 +3,14 @@ dist/
 build/
 .cache/
 .env*
+!.env.example
+backend/data/
+/data/
+backend/models/*.skops
+ml/data/raw/
+*.sqlite3
+*.sqlite3-shm
+*.sqlite3-wal
 .vite/
 vite.config.*.timestamp-*
 *.tsbuildinfo
@@ -15,3 +23,4 @@ logs/
 # Local tooling state.
 /.plugins/
 /.*-skills/
+

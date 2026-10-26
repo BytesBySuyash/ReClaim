@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import 'leaflet/dist/leaflet.css';
 @import 'tailwindcss';
 
@@ -122,3 +121,4 @@ html.dark-mode * {
 .wave-bar:nth-child(5) { animation-delay: 0.15s; }
 .wave-bar:nth-child(6) { animation-delay: 0.25s; }
 .wave-bar:nth-child(7) { animation-delay: 0.05s; }
+
